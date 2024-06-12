@@ -26,7 +26,6 @@ class LoginDataSourceImpl implements LoginDatasource {
     );
 
     if (response.statusCode == 200) {
-      print(response);
       return _handleLogin(response);
     } else {
       throw Exception('Failed to login');
