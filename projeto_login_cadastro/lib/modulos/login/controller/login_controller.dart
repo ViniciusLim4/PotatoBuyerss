@@ -12,12 +12,12 @@ class LoginController {
   });
 
   Future<User?> login({
-    required GlobalKey<FormState> formKey,
+    required GlobalKey<FormState> loginKey,
   }) async {
     User? user;
 
-    if (formKey.currentState!.validate()) {
-      formKey.currentState!.save();
+    if (loginKey.currentState!.validate()) {
+      loginKey.currentState!.save();
       
       loginBloc?.logIn(loginModel!);
     }

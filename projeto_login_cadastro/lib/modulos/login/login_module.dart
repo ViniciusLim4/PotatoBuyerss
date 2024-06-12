@@ -5,9 +5,11 @@ import 'package:projeto_login_cadastro/data/datasources/login_datasource.dart';
 import 'package:projeto_login_cadastro/data/models/login_model.dart';
 import 'package:projeto_login_cadastro/data/repositories/login_repository_impl.dart';
 import 'package:projeto_login_cadastro/domain/usecase/login/login_use_case.dart';
+import 'package:projeto_login_cadastro/modulos/cadastro/cadastro_module.dart';
 import 'package:projeto_login_cadastro/modulos/login/bloc/login_bloc.dart';
 import 'package:projeto_login_cadastro/modulos/login/controller/login_controller.dart';
 import 'package:projeto_login_cadastro/modulos/login/login_page.dart';
+import 'package:projeto_login_cadastro/shared/app_routes/app_routes.dart';
 
 class LoginModule extends Module {
   @override
@@ -15,17 +17,16 @@ class LoginModule extends Module {
         Bind((_) => Dio()),
         Bind((_) => Connectivity()),
         Bind((i) => LoginDataSourceImpl(i<Dio>())),
-        Bind((i) => LoginRepositoryImpl(i<LoginDataSourceImpl>(), i<Connectivity>())),
+        Bind((i) =>
+            LoginRepositoryImpl(i<LoginDataSourceImpl>(), i<Connectivity>())),
         Bind((i) => LoginUseCase(i<LoginRepositoryImpl>())),
-        Bind((i) => LoginModel (email: '', password: '')),
+        Bind((i) => LoginModel(email: '', password: '')),
         Bind((i) => LoginBloc(
-          loginUseCase: i<LoginUseCase>(),
-          loginModel: i<LoginModel>()
-        )),
+            loginUseCase: i<LoginUseCase>(), loginModel: i<LoginModel>())),
         Bind((i) => LoginController(
-          loginBloc: i<LoginBloc>(),
-          loginModel: i<LoginModel>(),
-        )),
+              loginBloc: i<LoginBloc>(),
+              loginModel: i<LoginModel>(),
+            )),
       ];
 
   @override
@@ -36,7 +37,10 @@ class LoginModule extends Module {
             controller: Modular.get<LoginController>(),
           ),
         ),
+        ModuleRoute(
+          AppRoutes.cadastro,
+          module: CadastroModule(),
+          transition: TransitionType.leftToRight,
+        )
       ];
 }
-
-

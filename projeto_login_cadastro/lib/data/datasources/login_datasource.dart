@@ -17,6 +17,7 @@ class LoginDataSourceImpl implements LoginDatasource {
 
   @override
   Future<User> login(LoginModel loginModel) async {
+    await Future.delayed(const Duration(seconds: 2));
     final response = await _dio.post(
       'https://api.example.com/login',
       data: {

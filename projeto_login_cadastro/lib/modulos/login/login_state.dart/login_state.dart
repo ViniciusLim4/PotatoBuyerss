@@ -1,3 +1,5 @@
+import 'package:projeto_login_cadastro/data/models/user_model.dart';
+
 abstract class LoginState {
   LoginState._();
 
@@ -47,17 +49,17 @@ class LoginErrorState extends LoginState {
 }
 
 final class LoginSuccessState extends LoginState {
-  final bool? isLoading;
+  final UserModel? userModel;
 
   LoginSuccessState({
-    this.isLoading,
+    this.userModel,
   }) : super._();
 
   LoginSuccessState copyWith({
-    bool? isLoading,
+    UserModel? isLoading,
   }) {
     return LoginSuccessState(
-      isLoading: isLoading ?? this.isLoading,
+      userModel: isLoading ?? this.userModel,
     );
   }
 }

@@ -1,4 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:projeto_login_cadastro/data/models/login_model.dart';
@@ -24,7 +23,7 @@ class LoginBloc extends Cubit<LoginState> {
     result.fold((error) {
       emit(LoginErrorState());
     }, (success) {
-      emit(LoginSuccessState(isLoading: false));
+      emit(LoginSuccessState());
     });
   }
 }

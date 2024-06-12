@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:projeto_login_cadastro/modulos/login/bloc/login_bloc.dart';
 import 'package:projeto_login_cadastro/modulos/login/controller/login_controller.dart';
 import 'package:projeto_login_cadastro/modulos/login/login_state.dart/login_state.dart';
@@ -15,7 +16,7 @@ class CardLoginWidget extends StatefulWidget {
 }
 
 class _CardLoginWidgetState extends State<CardLoginWidget> {
-  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> loginKey = GlobalKey<FormState>();
   final TextEditingController email = TextEditingController();
   final TextEditingController senha = TextEditingController();
   LoginController get controller => widget.controller;
@@ -35,10 +36,14 @@ class _CardLoginWidgetState extends State<CardLoginWidget> {
             child: Container(
               decoration: const BoxDecoration(
                 gradient: LinearGradient(
-                  colors: [Color(0xff283048), Color(0xff858a98)],
-                  stops: [0, 1],
-                  begin: Alignment(0.6, 0.0),
-                  end: Alignment(0.8, -0.8),
+                  colors: [
+                    Color(0xff7f7fd5),
+                    Color(0xff86a8e7),
+                    Color(0xff91eae4)
+                  ],
+                  stops: [0, 0.5, 1],
+                  begin: Alignment(-1.2, 1.2),
+                  end: Alignment(1.1, -1.2),
                 ),
                 borderRadius: BorderRadius.all(Radius.circular(40)),
               ),
@@ -49,7 +54,7 @@ class _CardLoginWidgetState extends State<CardLoginWidget> {
                     bloc: controller.loginBloc,
                     builder: (context, state) {
                       return Form(
-                        key: formKey,
+                        key: loginKey,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -107,9 +112,11 @@ class _CardLoginWidgetState extends State<CardLoginWidget> {
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
                                 TextButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    Modular.to.pushNamed('/cadastro');
+                                  },
                                   child: const Text(
-                                    'Nova senha',
+                                    'Cadastrar',
                                     style: TextStyle(color: Colors.white),
                                   ),
                                 ),
@@ -147,7 +154,7 @@ class _CardLoginWidgetState extends State<CardLoginWidget> {
   }
 
   Future<void> _doLoginHandler() async {
-    var user = await controller.login(formKey: formKey);
+    var user = await controller.login(loginKey: loginKey);
     if (user != null) {
       TextInput.finishAutofillContext();
       //COLOCAR ROTA PARA HOME
