@@ -1,4 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 
 class TextFormFieldWidget extends StatelessWidget {
@@ -17,18 +16,31 @@ class TextFormFieldWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8),
-      child: TextFormField(
-        controller: controller,
-        style: const TextStyle(color: Colors.white),
-        decoration: InputDecoration(
-          labelText: labelText,
-          labelStyle: const TextStyle(color: Colors.white),
-          focusedBorder: const UnderlineInputBorder(
-            borderSide: BorderSide(color: Colors.blueAccent),
-          ),
-          border: InputBorder.none,
+      child: DecoratedBox(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(12),
         ),
-        onSaved: (newValue) => onSave,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 12.0),
+          child: TextFormField(
+            controller: controller,
+            style: const TextStyle(color: Colors.black),
+            decoration: InputDecoration(
+              labelText: labelText,
+              labelStyle: const TextStyle(color: Colors.black),
+              border: InputBorder.none,
+              focusedBorder: InputBorder.none,
+              enabledBorder: InputBorder.none,
+              errorBorder: InputBorder.none,
+              disabledBorder: const OutlineInputBorder(
+                borderSide: BorderSide(color: Colors.white),
+              ),
+              fillColor: Colors.white,
+            ),
+            onSaved: (newValue) => onSave,
+          ),
+        ),
       ),
     );
   }

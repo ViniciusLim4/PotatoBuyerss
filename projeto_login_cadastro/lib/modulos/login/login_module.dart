@@ -21,12 +21,18 @@ class LoginModule extends Module {
             LoginRepositoryImpl(i<LoginDataSourceImpl>(), i<Connectivity>())),
         Bind((i) => LoginUseCase(i<LoginRepositoryImpl>())),
         Bind((i) => LoginModel(email: '', password: '')),
-        Bind((i) => LoginBloc(
-            loginUseCase: i<LoginUseCase>(), loginModel: i<LoginModel>())),
-        Bind((i) => LoginController(
-              loginBloc: i<LoginBloc>(),
-              loginModel: i<LoginModel>(),
-            )),
+        Bind(
+          (i) => LoginBloc(
+            loginUseCase: i<LoginUseCase>(),
+            loginModel: i<LoginModel>(),
+          ),
+        ),
+        Bind(
+          (i) => LoginController(
+            loginBloc: i<LoginBloc>(),
+            loginModel: i<LoginModel>(),
+          ),
+        ),
       ];
 
   @override
@@ -40,7 +46,7 @@ class LoginModule extends Module {
         ModuleRoute(
           AppRoutes.cadastro,
           module: CadastroModule(),
-          transition: TransitionType.leftToRight,
+          transition: TransitionType.fadeIn,
         )
       ];
 }
