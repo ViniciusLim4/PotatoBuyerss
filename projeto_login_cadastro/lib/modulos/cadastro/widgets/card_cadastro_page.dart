@@ -21,69 +21,61 @@ class CardCadastroPage extends StatelessWidget {
           color: AppColors.backgroundWhite,
           margin: EdgeInsets.zero,
           shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(40), topRight: Radius.circular(40)),
+            borderRadius: BorderRadius.all(Radius.circular(30))
           ),
           elevation: 10,
           child: SingleChildScrollView(
-            child: Container(
-              decoration: const BoxDecoration(
-                borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(40),
-                    topRight: Radius.circular(40)),
-              ),
-              child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 60, horizontal: 30),
-                child: Form(
-                  key: cadastroKey,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      const Text(
-                        'CADASTRO',
-                        style: TextStyle(
-                          color: AppColors.primaryText,
-                          fontSize: 18,
-                        ),
+            child: Padding(
+              padding:
+                  const EdgeInsets.symmetric(vertical: 60, horizontal: 30),
+              child: Form(
+                key: cadastroKey,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    const Text(
+                      'CADASTRO',
+                      style: TextStyle(
+                        color: AppColors.primaryText,
+                        fontSize: 18,
                       ),
-                      TextFormFieldWidget(
-                        onSave: () => {},
-                        labelText: 'Nome',
+                    ),
+                    TextFormFieldWidget(
+                      onSave: () => {},
+                      labelText: 'Nome',
+                    ),
+                    TextFormFieldWidget(
+                      onSave: () => {},
+                      labelText: 'Senha',
+                    ),
+                    TextFormFieldWidget(
+                      onSave: () => {},
+                      labelText: 'Email',
+                    ),
+                    TextFormFieldWidget(
+                      onSave: () => {},
+                      labelText: 'Cpf',
+                    ),
+                    TextFormFieldWidget(
+                      onSave: () => {},
+                      labelText: 'Telefone',
+                    ),
+                    const SizedBox(height: 15),
+                    ButtonWidget(
+                      textButton: 'Cadastrar',
+                      onTap: () => _cadastrarHandler(),
+                    ),
+                    const SizedBox(height: 15),
+                    TextButton(
+                      onPressed: () {
+                        Modular.to.pop();
+                      },
+                      child: const Text(
+                        'Login',
+                        style: TextStyle(color: Colors.black),
                       ),
-                      TextFormFieldWidget(
-                        onSave: () => {},
-                        labelText: 'Senha',
-                      ),
-                      TextFormFieldWidget(
-                        onSave: () => {},
-                        labelText: 'Email',
-                      ),
-                      TextFormFieldWidget(
-                        onSave: () => {},
-                        labelText: 'Cpf',
-                      ),
-                      TextFormFieldWidget(
-                        onSave: () => {},
-                        labelText: 'Telefone',
-                      ),
-                      const SizedBox(height: 15),
-                      ButtonWidget(
-                        textButton: 'Cadastrar',
-                        onTap: () => _cadastrarHandler(),
-                      ),
-                      const SizedBox(height: 15),
-                      TextButton(
-                        onPressed: () {
-                          Modular.to.pop();
-                        },
-                        child: const Text(
-                          'Login',
-                          style: TextStyle(color: Colors.black),
-                        ),
-                      ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
             ),
@@ -94,7 +86,7 @@ class CardCadastroPage extends StatelessWidget {
   }
 
   Future<void> _cadastrarHandler() async {
-    var user = await controller.login(cadastroKey: cadastroKey);
+    var user = await controller.register(cadastroKey: cadastroKey);
     if (user != null) {
       TextInput.finishAutofillContext();
       //COLOCAR ROTA PARA LOGIN

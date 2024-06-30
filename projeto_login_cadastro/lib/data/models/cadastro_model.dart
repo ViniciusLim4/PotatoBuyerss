@@ -1,12 +1,11 @@
-
-class CadastroModel {
+class RegisterModel {
   final String? nome;
   final String? senha;
   final String? email;
   final String? cpf;
   final String? telefone;
 
-  CadastroModel({
+  RegisterModel({
     this.nome,
     this.senha,
     this.email,

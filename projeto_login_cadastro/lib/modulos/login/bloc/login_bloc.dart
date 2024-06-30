@@ -12,13 +12,15 @@ class LoginBloc extends Cubit<LoginState> {
     required this.loginModel,
   }) : super(LoginInicialState());
 
-  Future<void> logIn(LoginModel loginModel) async {
-    return await _onlogIn(loginModel: loginModel);
+  Future<void> login({required LoginModel loginModel}) async {
+    return await _onlogIn(params: loginModel);
   }
 
-  Future<void> _onlogIn({required LoginModel loginModel}) async {
+  Future<void> _onlogIn({required LoginModel params}) async {
     emit(LoginLoadingState());
-    var result = await loginUseCase(params: loginModel);
+
+    var result = await loginUseCase(params: params);
+    
     result.fold((error) {
       emit(LoginErrorState());
     }, (success) {

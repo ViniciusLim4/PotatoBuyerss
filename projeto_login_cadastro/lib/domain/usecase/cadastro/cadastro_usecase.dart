@@ -1,34 +1,17 @@
 import 'package:fpdart/fpdart.dart';
+import 'package:projeto_login_cadastro/data/models/cadastro_model.dart';
 import 'package:projeto_login_cadastro/domain/repositories/cadastro_repository.dart';
 import 'package:projeto_login_cadastro/domain/usecase/use_case.dart';
 
-class CadastroUsecase implements UseCase<bool, CadastroParams> {
+class CadastroUsecase implements UseCase<bool, RegisterModel> {
   final CadastroRepository cadastroRepository;
 
   CadastroUsecase(this.cadastroRepository);
 
   @override
   Future<Either<Exception, bool>> call({
-    required CadastroParams params,
+    required RegisterModel params,
   }) async {
-    return await cadastroRepository.cadastro(
-      params: params,
-    );
+    return await cadastroRepository.register(params: params);
   }
-}
-
-class CadastroParams {
-  final String? cpf;
-  final String? nome;
-  final String? email;
-  final String? telefone;
-  final String? senha;
-
-  CadastroParams({
-    required this.cpf,
-    required this.nome,
-    required this.email,
-    required this.telefone,
-    required this.senha
-  });
 }

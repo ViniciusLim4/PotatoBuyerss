@@ -5,10 +5,10 @@ import 'package:projeto_login_cadastro/modulos/login/bloc/login_bloc.dart';
 
 class LoginController {
   final LoginBloc? loginBloc;
-  final LoginModel? loginModel;
+  final LoginModel loginModel;
   LoginController({
-    this.loginBloc,
-    this.loginModel,
+    required this.loginBloc,
+    required this.loginModel,
   });
 
   Future<User?> login({
@@ -19,7 +19,7 @@ class LoginController {
     if (loginKey.currentState!.validate()) {
       loginKey.currentState!.save();
       
-      loginBloc?.logIn(loginModel!);
+      loginBloc?.login(loginModel: loginModel);
     }
     return user;
   }

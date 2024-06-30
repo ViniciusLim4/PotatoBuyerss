@@ -2,7 +2,6 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:projeto_login_cadastro/data/models/login_model.dart';
 import 'package:projeto_login_cadastro/domain/entities/user.dart';
-import 'package:projeto_login_cadastro/shared/error_types/exceptions.dart';
 
 abstract class LoginRepository extends RepositoryTemplate {
   LoginRepository(super.connectivity);
@@ -29,7 +28,6 @@ abstract class RepositoryTemplate {
     }
   }
 }
-
 
 class AppException implements Exception {
   final String message;

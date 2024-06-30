@@ -9,7 +9,8 @@ class AppColors {
   static const Color primaryText = Color(0xFF333333); // Cinza Escuro
   static const Color secondaryText = Color(0xFF777777); // Cinza Médio
   static const Color highlightOrange = Color(0xFFFF6F61); // Laranja Coral
-  static const Color supportBlue = Color(0xFF87CEEB); // Azul Celeste
+  static const Color supportBlue = Color(0xFF87CEEB); 
+  static Color prymaryBlue = Colors.blue.shade900;
 }
 
 

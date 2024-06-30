@@ -1,6 +1,5 @@
 import 'package:fpdart/fpdart.dart';
 import 'package:projeto_login_cadastro/data/models/login_model.dart';
-import 'package:projeto_login_cadastro/data/models/user_model.dart';
 import 'package:projeto_login_cadastro/domain/entities/user.dart';
 import 'package:projeto_login_cadastro/domain/repositories/login_repository.dart';
 import 'package:projeto_login_cadastro/domain/usecase/use_case.dart';

@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:projeto_login_cadastro/data/models/cadastro_model.dart';
 import 'package:projeto_login_cadastro/domain/usecase/cadastro/cadastro_usecase.dart';
 import 'package:projeto_login_cadastro/shared/error_types/exceptions.dart';
 import 'package:projeto_login_cadastro/shared/response/default_response.dart';
@@ -8,7 +9,9 @@ import 'package:projeto_login_cadastro/shared/response/default_response_mapper.d
 abstract class CadastroDatasource {
   CadastroDatasource(Dio dio);
 
-  Future<bool> cadastro(CadastroParams params);
+  Future<bool> register({
+    required RegisterModel params,
+  });
 }
 
 class CadastroDataSourceImpl implements CadastroDatasource {
@@ -17,7 +20,7 @@ class CadastroDataSourceImpl implements CadastroDatasource {
   CadastroDataSourceImpl(Dio dio) : _dio = dio;
 
   @override
-  Future<bool> cadastro(CadastroParams params) async {
+  Future<bool> register({required RegisterModel params}) async {
     try {
       var data = params;
 

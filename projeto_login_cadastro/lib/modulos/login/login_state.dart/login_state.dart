@@ -56,10 +56,10 @@ final class LoginSuccessState extends LoginState {
   }) : super._();
 
   LoginSuccessState copyWith({
-    UserModel? isLoading,
+    UserModel? userModel,
   }) {
     return LoginSuccessState(
-      userModel: isLoading ?? this.userModel,
+      userModel: userModel ?? this.userModel,
     );
   }
 }

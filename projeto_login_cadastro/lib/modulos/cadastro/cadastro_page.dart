@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:projeto_login_cadastro/modulos/cadastro/controller/cadastro_controller.dart';
 import 'package:projeto_login_cadastro/modulos/cadastro/widgets/card_cadastro_page.dart';
-import 'package:projeto_login_cadastro/shared/app_colors/app_colors.dart';
 
 class CadastroPage extends StatefulWidget {
   final CadastroController controller;
@@ -18,19 +17,14 @@ class _CadastroPageState extends State<CadastroPage> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Stack(
-        alignment: Alignment.bottomCenter,
+        alignment: Alignment.center,
         children: [
           Column(
             children: [
               Expanded(
-                flex: 1,
+                flex: 2,
                 child: Container(
-                  decoration: const BoxDecoration(
-                    borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(100),
-                    ),
-                    gradient: AppGradients.primaryGradient,
-                  ),
+                  color: Colors.blue.shade900,
                 ),
               ),
               Expanded(
@@ -41,11 +35,8 @@ class _CadastroPageState extends State<CadastroPage> {
               ),
             ],
           ),
-          Padding(
-            padding: const EdgeInsets.only(top: 100),
-            child: CardCadastroPage(
-              controller: widget.controller,
-            ),
+          CardCadastroPage(
+            controller: widget.controller,
           ),
         ],
       ),

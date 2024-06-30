@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import 'package:projeto_login_cadastro/data/mappers/login/user_mapper.dart';
 import 'package:projeto_login_cadastro/data/models/login_model.dart';
@@ -18,12 +20,12 @@ class LoginDataSourceImpl implements LoginDatasource {
   @override
   Future<User> login(LoginModel loginModel) async {
     await Future.delayed(const Duration(seconds: 2));
+
+    var data = jsonEncode(loginModel);
+    
     final response = await _dio.post(
       'https://api.example.com/login',
-      data: {
-        'email': loginModel.email,
-        'password': loginModel.password,
-      },
+      data: data
     );
 
     if (response.statusCode == 200) {
